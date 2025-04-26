@@ -1,0 +1,60 @@
+# OpenFOAM .gitignore
+
+# Ignore all numbered directories (time steps)
+/[0-9]*/
+/[0-9][0-9]*/
+/[0-9][0-9][0-9]*/
+
+# Ignore processor directories
+/processor*/
+/postProcessing
+
+# Ignore common OpenFOAM generated files
+*~
+*.log
+log.*
+*.dep
+*.so
+*.o
+*.a
+lnInclude
+linux*
+Darwin*
+dynamicCode
+*.gz
+*.zip
+*.tgz
+*.tar
+
+# Ignore backup files
+*~.*
+\#*\#
+*.bak
+*.old
+
+# Ignore build directories
+build/
+Make/*/
+.cache/
+.settings/
+
+# Ignore ParaView state files and other large files
+*.vtk
+*.vtp
+*.pvd
+*.foam
+*.OpenFOAM
+*.sMesh
+*.stl
+
+# Allow specific time directories (initial conditions only)
+!/0/
+!/constant/
+!/system/
+
+# Editor and OS specific files
+.DS_Store
+._.DS_Store
+.vscode/
+.idea/
+*.swp

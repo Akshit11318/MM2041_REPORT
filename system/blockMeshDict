@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Domain dimensions: 10m x 2.5m x 0.01m
+// Adjusted mesh resolution for appropriate cell aspect ratio
+
+scale   1.0;  // Use actual dimensions
+
+vertices
+(
+    (0 0 0)       // 0
+    (10 0 0)      // 1 - Extended to 10m
+    (10 2.5 0)    // 2
+    (0 2.5 0)     // 3
+    (0 0 0.01)    // 4
+    (10 0 0.01)   // 5 - Extended to 10m
+    (10 2.5 0.01) // 6
+    (0 2.5 0.01)  // 7
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (500 125 1) simpleGrading (1 1 1) // Increased x-cells to 500
+);
+
+edges
+(
+);
+
+boundary
+(
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (1 5 6 2)
+        );
+    }
+    walls
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+            (3 7 6 2)
+        );
+    }
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
+
+// ************************************************************************* //

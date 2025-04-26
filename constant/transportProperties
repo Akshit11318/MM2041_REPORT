@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases          (water oil);
+
+// Optimized properties for a 10m domain with enhanced finger development
+// Higher viscosity ratio for more pronounced fingering
+
+water
+{
+    transportModel  Newtonian;
+    nu              1e-7;      // Reduced kinematic viscosity [m²/s]
+    rho             1000;      // density [kg/m³]
+}
+
+oil
+{
+    transportModel  Newtonian;
+    nu              3e-4;      // Increased viscosity [m²/s] - 3000x ratio
+    rho             850;       // density [kg/m³]
+}
+
+// Surface tension coefficient [N/m]
+// Adjusted for optimal finger development in the 10m domain
+sigma           0.006;       // Lower surface tension enhances fingering
+
+// ************************************************************************* //
