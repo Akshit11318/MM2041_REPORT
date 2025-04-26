@@ -5,6 +5,25 @@
 
 This OpenFOAM case simulates the Saffman-Taylor instability (viscous fingering phenomenon) that occurs when a less viscous fluid (water) displaces a more viscous fluid (oil) in a horizontal Hele-Shaw cell-like geometry.
 
+## Simulation Visualization
+
+### Video of Simulation
+
+https://github.com/Akshit11318/MM2041_REPORT/blob/master/simulation.mp4
+
+### Progression of Viscous Fingering
+
+Below are snapshots from different stages of the simulation showing the development of the characteristic finger patterns:
+
+![Viscous fingering at t=80s](./simulation/flow-10.png)
+*Early development of viscous fingers at t=320s showing initial perturbations at the interface*
+
+![Viscous fingering at t=480s](./simulation/flow-60.png)
+*Mid-stage development at t=480s with well-formed finger structures*
+
+![Viscous fingering at t=640s](./simulation/flow-80.png)
+*Late-stage development at t=640s showing complex branching patterns*
+
 ## Problem Description
 
 - Domain: 10m × 2.5m × 0.01m thin horizontal cell
