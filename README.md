@@ -10,10 +10,10 @@ This OpenFOAM case simulates the Saffman-Taylor instability (viscous fingering p
 - Domain: 10m × 2.5m × 0.01m thin horizontal cell
 - Initially filled with oil (more viscous fluid)
 - Water (less viscous fluid) injected at the inlet
-- Mobility ratio (μoil/μwater) = 100, favorable for fingering
+- Mobility ratio (μoil/μwater) = 3000, favorable for fingering
 - No gravity effects (horizontal displacement)
-- Surface tension coefficient = 0.02 N/m
-- Simulation time: 800 seconds (extended from initial 400 seconds)
+- Surface tension coefficient = 0.006 N/m
+- Simulation time: 800 seconds 
 
 ## Prerequisites
 
@@ -90,12 +90,6 @@ make initialize
 # Run the simulation with a specific number of cores
 make run NCORES=8
 
-# Apply natural perturbation
-make natural-perturbation
-
-# Apply center release pattern
-make center-release
-
 # Reconstruct case from parallel run
 make reconstruct
 
@@ -136,7 +130,6 @@ make clean
 ## Performance Considerations
 
 - The simulation uses adaptive time stepping with a maximum Courant number of 0.5
-- With 14 cores, expect the simulation to complete in approximately 1-2 hours
 - Monitor the Courant number in the log file to ensure stability
 - If the simulation is too slow, consider increasing maxCo (but watch for instabilities)
 

@@ -7,7 +7,7 @@ BIBTEX = bibtex
 SOURCE_DIR = ./latex
 OUTPUT_DIR = ./output
 MAIN = main
-PDF = $(MAIN).pdf
+PDF = report.pdf
 
 # Create output directory if it doesn't exist
 $(shell mkdir -p $(OUTPUT_DIR))
@@ -25,7 +25,9 @@ $(OUTPUT_DIR)/$(PDF): $(SOURCE_DIR)/$(MAIN).tex
 	$(BIBTEX) ../$(OUTPUT_DIR)/$(MAIN) || true && \
 	$(LATEX) -output-directory=../$(OUTPUT_DIR) $(MAIN) && \
 	$(LATEX) -output-directory=../$(OUTPUT_DIR) $(MAIN)
-	@echo "PDF generated at $(OUTPUT_DIR)/$(PDF)"
+	@echo "PDF generated at $(OUTPUT_DIR)/$(MAIN).pdf"
+	@echo "Renaming PDF to $(PDF)..."
+	cp $(OUTPUT_DIR)/$(MAIN).pdf $(OUTPUT_DIR)/$(PDF)
 
 # Clean temporary files but keep the PDF
 clean-temp:
@@ -36,7 +38,7 @@ clean-temp:
 # Full clean (remove all generated files)
 clean: clean-temp
 	@echo "Removing generated PDF..."
-	rm -f $(OUTPUT_DIR)/$(PDF)
+	rm -f $(OUTPUT_DIR)/$(MAIN).pdf $(OUTPUT_DIR)/$(PDF)
 
 # Open the PDF with the default viewer (Linux only)
 view: $(OUTPUT_DIR)/$(PDF)
